@@ -1,0 +1,70 @@
+{
+  "name": "hyper-stream",
+  "version": "1.0.0",
+  "description": "Lightweight library for streaming HTML markup",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "engines": {
+    "node": ">=8.x"
+  },
+  "keywords": [
+    "html",
+    "stream",
+    "hyperscript"
+  ],
+  "xo": {
+    "space": true,
+    "rules": {
+      "semi": 0,
+      "no-extra-semi": 1,
+      "arrow-parens": 0,
+      "space-before-function-paren": 0,
+      "import/no-extraneous-dependencies": 0,
+      "import/no-unresolved": 0,
+      "guard-for-in": 0,
+      "no-warning-comments": 0
+    }
+  },
+  "devDependencies": {
+    "ava": "^0.24.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "cross-env": "^5.2.0",
+    "nyc": "^11.3.0",
+    "xo": "^0.18.2"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ],
+    "plugins": [
+      [
+        "transform-runtime",
+        {
+          "polyfill": false,
+          "regenerator": true
+        }
+      ]
+    ]
+  },
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "babel-register"
+    ]
+  },
+  "scripts": {
+    "clean": "rm -rf ./coverage ./.nyc_output",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
+    "build:es": "babel src --out-dir es",
+    "build": "npm run build:commonjs && npm run build:es",
+    "postbuild": "./mjs.sh",
+    "lint": "xo src test/spec --no-color",
+    "pretest": "npm run lint && npm run build",
+    "test": "ava ${SPEC:-test/spec} --no-color",
+    "cover": "nyc --reporter=lcov npm test"
+  }
+}
