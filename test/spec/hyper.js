@@ -41,6 +41,8 @@ test('should write HTML document', async t => {
   h('span', pkg.name, true)
   h('span', '"' + pkg.version + '"')
 
+  h('div', {class: 'grow'}, true)
+
   h(['body', 'html'], true)
   t.pass()
 })

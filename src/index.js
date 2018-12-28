@@ -34,6 +34,10 @@ const hyper = (stream) => {
 
   function h(tag, attrs, children, close) {
 
+    if (typeof(children) === 'boolean') {
+      close = children
+    }
+
     // Same operation on multiple tags,
     // useful for closing multiple tags
     if (Array.isArray(tag)) {
@@ -49,9 +53,6 @@ const hyper = (stream) => {
 
     // Overloaded attributes
     } else if (typeof(attrs) === 'string' || Array.isArray(attrs)) {
-      if (typeof(children) === 'boolean') {
-        close = children
-      }
       children = attrs
       attrs = null
     }
