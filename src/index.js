@@ -2,18 +2,16 @@ const htmlRegExp = new RegExp('[&<>"]', 'g');
 const attrRegExp = new RegExp('"', 'g')
 
 function unsafe(s) {
-    switch (s) {
+  switch (s) {
     case '&':
-        return '&amp;';
+      return '&amp;';
     case '<':
-        return '&lt;';
+      return '&lt;';
     case '>':
-        return '&gt;';
+      return '&gt;';
     case '"':
-        return '&quot;';
-    default:
-        return s;
-    }
+      return '&quot;';
+  }
 }
 
 const escapeAttribute = (s) => {
@@ -34,56 +32,6 @@ const escapeHtml = (s) => {
 //
 const hyper = (stream) => {
 
-  /**
-   *  Write a doctype:
-   *
-   *  h.doctype()
-   *
-   *  Start an element:
-   *
-   *  h('html')
-   *
-   *  Close an element:
-   *
-   *  h('body', true)
-   *
-   *  Write some text content:
-   *
-   *  h.text('Hello')
-   *
-   *  With attributes:
-   *
-   *  h('meta', {charset: 'utf-8'})
-   *
-   *  With child text node and closing tag:
-   *
-   *  h('h3', 'Error', true)
-   *
-   *  With attributes, child text node and closing tag:
-   *
-   *  h('a', {href:'#'}, 'text', true)
-   *
-   *  With child elements:
-   *
-   *  h('pre', [
-   *    {
-   *      tag: 'code',
-   *      children: stack.toString(),
-   *      close: true
-   *    }
-   *  ], true)
-   *
-   *  With child elements and attributes:
-   *
-   *  h('pre', {class: 'stack'}, [
-   *    {
-   *      tag: 'code',
-   *      attrs: {class: 'error'},
-   *      children: stack.toString(),
-   *      close: true
-   *    }
-   *  ], true)
-   */
   function h(tag, attrs, children, close) {
 
     // Same operation on multiple tags,
@@ -111,7 +59,7 @@ const hyper = (stream) => {
     // Open a tag
     stream.write(`<${tag}`)
 
-    if (attrs && typeof(attrs) === 'object') {
+    if (typeof(attrs) === 'object' && attrs) {
       for (let k in attrs) {
         stream.write(` ${k}="${escapeAttribute(attrs[k])}"`)
       }

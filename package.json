@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Lightweight library for streaming HTML markup",
   "license": "MIT",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "homepage": "https://github.com/otsu-app/hyper-stream",
   "engines": {
     "node": ">=8.x"
   },
@@ -59,9 +58,8 @@
   "scripts": {
     "clean": "rm -rf ./coverage ./.nyc_output",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
-    "build:es": "babel src --out-dir es",
-    "build": "npm run build:commonjs && npm run build:es",
-    "postbuild": "./mjs.sh",
+    "build": "npm run build:commonjs",
+    "postbuild": "cp -f src/index.js lib/index.mjs",
     "lint": "xo src test/spec --no-color",
     "pretest": "npm run lint && npm run build",
     "test": "ava ${SPEC:-test/spec} --no-color",
