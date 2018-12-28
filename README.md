@@ -5,8 +5,10 @@ Zero dependency, lightweight library for writing HTML markup to a stream.
 ### Install
 
 ```
-yarn add hyper-stream
+yarn add otsu-app/hyper-stream
 ```
+
+Note you must install from github as npm says that the package name is too similar to another however when I try to publish as `@tmpfs/hyper-stream` apparently I must sign up for private packages, thanks npm for the dark pattern now I will only publish my packages via git repositories.
 
 ### Usage
 
