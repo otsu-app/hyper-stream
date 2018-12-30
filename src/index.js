@@ -62,6 +62,10 @@ const hyper = (stream) => {
 
     if (typeof(attrs) === 'object' && attrs) {
       for (let k in attrs) {
+        if (typeof(attrs[k]) === 'boolean' && attrs[k]) {
+          stream.write(' ' + k)
+          continue
+        }
         stream.write(` ${k}="${escapeAttribute(attrs[k])}"`)
       }
     }
