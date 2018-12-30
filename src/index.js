@@ -15,11 +15,11 @@ function unsafe(s) {
 }
 
 const escapeAttribute = (s) => {
-  return s.replace(attrRegExp, '&quot;')
+  return ('' + s).replace(attrRegExp, '&quot;')
 }
 
 const escapeHtml = (s) => {
-  return s.replace(htmlRegExp, unsafe)
+  return ('' + s).replace(htmlRegExp, unsafe)
 }
 
 // Utility for writing html elements to a stream.
