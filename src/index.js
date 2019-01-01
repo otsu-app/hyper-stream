@@ -61,12 +61,16 @@ const hyper = (stream) => {
     stream.write(`<${tag}`)
 
     if (typeof(attrs) === 'object' && attrs) {
+      console.dir(attrs)
       for (let k in attrs) {
-        if (typeof(attrs[k]) === 'boolean' && attrs[k]) {
-          stream.write(' ' + k)
-          continue
+        if (typeof(attrs[k]) === 'boolean') {
+          console.log('rendering boolean attribute: ' + k)
+          if (attrs[k]) {
+            stream.write(' ' + k)
+          }
+        } else {
+          stream.write(` ${k}="${escapeAttribute(attrs[k])}"`)
         }
-        stream.write(` ${k}="${escapeAttribute(attrs[k])}"`)
       }
     }
 
