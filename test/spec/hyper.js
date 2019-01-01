@@ -1,8 +1,8 @@
 import test from 'ava'
-import {hyper} from '../../src/index'
-import pkg from '../../package.json'
+import {hyper} from '../../src'
+import pkg from '../../package'
 
-test('should use custom doctype', async t => {
+test('should use custom doctype', t => {
   const stream = process.stdout
   const h = hyper(stream)
   h.doctype('html')
@@ -11,7 +11,7 @@ test('should use custom doctype', async t => {
 
 // Yeh i know there are no assertions, trust me
 // it works ;)
-test('should write HTML document', async t => {
+test('should write HTML document', t => {
   const stream = process.stdout
   const h = hyper(stream)
   h.doctype()
