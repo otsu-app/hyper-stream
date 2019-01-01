@@ -58,7 +58,9 @@
     "xo": "^0.23.0"
   },
   "scripts": {
-    "build": "babel src --out-dir lib",
+    "prebuild": "yarn lint",
+    "build": "babel src/index.js --out-file lib/index.js",
+    "postbuild": "cp src/index.js lib/index.mjs",
     "watch": "babel --watch src/*.js --out-dir lib",
     "lint": "xo src test/spec --no-color",
     "pretest": "yarn lint && yarn build",
