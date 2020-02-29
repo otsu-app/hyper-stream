@@ -1,6 +1,6 @@
 {
   "name": "hyper-stream",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Lightweight library for streaming HTML markup",
   "homepage": "https://github.com/otsu-app/hyper-stream",
   "license": "MIT",
