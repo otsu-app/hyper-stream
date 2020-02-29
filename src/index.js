@@ -1,5 +1,5 @@
-const htmlRegExp = new RegExp('[&<>"]', 'g');
-const attrRegExp = new RegExp('"', 'g')
+const htmlRegExp = /[&<>"]/g;
+const attrRegExp = /"/g;
 
 function unsafe(s) {
   switch (s) {

@@ -1,6 +1,6 @@
 import test from 'ava'
 import {hyper} from '../../src'
-import pkg from '../../package'
+import pkg from '../../package.json'
 
 test('should use custom doctype', t => {
   const stream = process.stdout
