@@ -53,9 +53,9 @@
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.2.3",
     "@babel/register": "^7.0.0",
-    "ava": "3.4.0",
+    "ava": "3.5.0",
     "nyc": "15.0.0",
-    "xo": "0.27.2"
+    "xo": "0.28.0"
   },
   "scripts": {
     "prebuild": "yarn lint",
@@ -64,7 +64,7 @@
     "watch": "babel --watch src/*.js --out-dir lib",
     "lint": "xo src test/spec --no-color",
     "pretest": "yarn lint && yarn build",
-    "test": "ava test/spec/hyper.js --no-color",
+    "test": "ava test/spec/hyper.js",
     "cover": "nyc --reporter=lcov npm test"
   }
 }

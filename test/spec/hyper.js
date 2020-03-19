@@ -33,7 +33,7 @@ test('should write HTML document', t => {
      {
        tag: 'code',
        attrs: {class: 'javascript'},
-       children: "import {hyper} from 'hyper-stream'",
+       children: 'import {hyper} from ’hyper-stream’',
        close: true
      }
    ], true)
